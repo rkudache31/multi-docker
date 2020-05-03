@@ -14,7 +14,7 @@ after_sucess:
  #login my docker repository
    - echo "$DOCKER_PASSWORD"|docker login -u "$DOCKER_ID" --password-stdin
    # take image and push
-   - docker  push r/multi-client
-   - docker  push r/multi-nginx
-   - docker  push r/multi-server
-   - docker push r/multi-worker
+   - docker  push  rkudache31/complex:client r/multi-client
+   - docker  push rkudache31/complex:nginx  r/multi-nginx
+   - docker  push  rkudache31/complex:server r/multi-server
+   - docker push rkudache31/complex:worker r/multi-worker
