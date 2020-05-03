@@ -3,18 +3,18 @@ services:
    - docker
 
 before_install:
-   - docker build -t r/react-test -f ./client/Dockerfile.dev ./client
+   - docker build -t rkudache31/react-test -f ./client/Dockerfile.dev ./client
 script:
-   docker run r/react-test npm test -- --coverage 
+   docker run rkudache31/react-test npm test -- --coverage 
 after_sucess:
-   - docker build -t r/multi-client ./client
-   - docker build -t r/multi-nginx ./nginx
-   - docker build -t r/multi-server ./server
-   - docker build -t r/multi-worker ./worker 
+   - docker build -t rkudache31/multi-client ./client
+   - docker build -t rkudache31/multi-nginx ./nginx
+   - docker build -t rkudache31/multi-server ./server
+   - docker build -t rkudache31/multi-worker ./worker 
  #login my docker repository
    - echo "$DOCKER_PASSWORD"|docker login -u "$DOCKER_ID" --password-stdin
    # take image and push
-   - docker  push  rkudache31/complex:client r/multi-client
-   - docker  push rkudache31/complex:nginx  r/multi-nginx
-   - docker  push  rkudache31/complex:server r/multi-server
-   - docker push rkudache31/complex:worker r/multi-worker
+   - docker  push  rkudache31/multi-client
+   - docker  push rkudache31/multi-nginx
+   - docker  push  rkudache31/multi-server
+   - docker push rkudache31/multi-worker
