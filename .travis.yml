@@ -18,3 +18,15 @@ after_sucess:
    - docker  push rkudache31/multi-nginx
    - docker  push  rkudache31/multi-server
    - docker push rkudache31/multi-worker
+deploy:
+   provider: elasticbeanstalk
+   region: us-east-2
+   app: Multi-Docker
+   env: MultiDocker-env
+   bucket_name: elasticbeanstalk-us-east-2-149157452571
+   bucket_path: docker_multi
+   on:
+     branch: master
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key: $AWS_SECRET_KEY
+
